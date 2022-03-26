@@ -1,0 +1,15 @@
+# Local Makefile.def
+
+localdefault: help # default target
+
+DIR       = ${IEDIR}
+SCRIPTDIR = ${IEDIR}/share/Scripts
+LIBDIR    = ${IEDIR}/src
+RUNDIR    = ${IEDIR}/run
+BINDIR    = ${IEDIR}/src
+INCLDIR   = ${DIR}/share/include
+SHAREDIR  = ${IEDIR}/share/Library/src
+UTILDIR   = ${IEDIR}/util
+
+TIMINGDIR      = ${UTILDIR}/TIMING/src
+#TIMINGDIR     = ${UTILDIR}/TIMING/srcEmpty
