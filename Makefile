@@ -27,7 +27,7 @@ SIM:
 	cd ${TIMINGDIR}; $(MAKE) LIB
 	cd src; $(MAKE) LIB
 	cd src; make SIM
-
+	mkdir output
 
 # Default component
 COMPONENT = IE

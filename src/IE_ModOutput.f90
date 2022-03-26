@@ -18,7 +18,8 @@ contains
         integer :: i, j
         character(len=50) :: formatcode
         ! ---------------------------------------------------------------------
-        open(UnitTmp_, file=NameOutputDir//NameOutFile, action='write')
+        open(UnitTmp_, file=trim(NameOutputDir)//trim(NameOutFile), & 
+             action='write')
 
         write(UnitTmp_, *) 'i, j, Theta, Phi, Potential, Jr, Epsilon,'// &
                            'C, Sigma0, SigmaP, SigmaH'
