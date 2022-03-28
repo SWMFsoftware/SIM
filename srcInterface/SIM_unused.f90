@@ -1,21 +1,21 @@
-! Copyright (C) 2002 Regents of the University of Michigan, portions used with
+! Copyright (C) 2002 Regents of the University of Michigan,
+!  portions used with
 ! permission. For more information, see http://csem.engin.umich.edu/tools/swmf
 
-module IE_ModUnused 
-	
+module SIM_unused
+
 	use ModUtilities, ONLY: CON_stop
-	
+
 	implicit none
-	
+
 	contains
   !============================================================================
   subroutine IE_save_restart(TimeSimulation)
 
-    !INPUT PARAMETERS:
     real,     intent(in) :: TimeSimulation   ! seconds from start time
 
-    character(len=*), parameter :: NameSub='IE_save_restart'
-
+    character(len=*), parameter:: NameSub = 'IE_save_restart'
+    !--------------------------------------------------------------------------
     call CON_stop(NameSub//': IE_ERROR: empty version cannot be used!')
 
   end subroutine IE_save_restart
@@ -28,8 +28,8 @@ module IE_ModUnused
     character(len=*), intent(in) :: NameVar_I(nVar)
     real,             intent(in) :: tSimulation
 
-    character (len=*),parameter :: NameSub = 'IE_get_for_gm'
-
+    character(len=*), parameter:: NameSub = 'IE_get_for_gm'
+    !--------------------------------------------------------------------------
     call CON_stop(NameSub//': IE_ERROR: empty version cannot be used!')
 
   end subroutine IE_get_for_gm
@@ -39,8 +39,8 @@ module IE_ModUnused
     integer,          intent(in) :: iSize, jSize, nVar
     real,             intent(in) :: Buffer_IIV(iSize,jSize,nVar)
 
-    character (len=*),parameter :: NameSub='IE_put_from_gm'
-
+    character(len=*), parameter:: NameSub = 'IE_put_from_gm'
+    !--------------------------------------------------------------------------
     call CON_stop(NameSub//': IE_ERROR: empty version cannot be used!')
 
   end subroutine IE_put_from_gm
@@ -48,14 +48,14 @@ module IE_ModUnused
   subroutine IE_get_for_pw(Buffer_IIV, iSize, jSize, nVar, Name_V, NameHem,&
        tSimulation)
 
-    character (len=*),parameter :: NameSub='IE_get_for_pw'
-
     integer, intent(in)           :: iSize, jSize, nVar
     real, intent(out)             :: Buffer_IIV(iSize,jSize,nVar)
     character (len=*),intent(in)  :: NameHem
     character (len=*),intent(in)  :: Name_V(nVar)
     real,             intent(in)  :: tSimulation
 
+    character(len=*), parameter:: NameSub = 'IE_get_for_pw'
+    !--------------------------------------------------------------------------
     call CON_stop(NameSub//': IE_ERROR: empty version cannot be used!')
 
   end subroutine IE_get_for_pw
@@ -63,14 +63,14 @@ module IE_ModUnused
   subroutine IE_get_for_rb(Buffer_IIV, iSize, jSize, nVar, Name_V, NameHem,&
        tSimulation)
 
-    character (len=*),parameter :: NameSub='IE_get_for_rb'
-
     integer, intent(in)           :: iSize, jSize, nVar
     real, intent(out)             :: Buffer_IIV(iSize,jSize,nVar)
     character (len=*),intent(in)  :: NameHem
     character (len=*),intent(in)  :: Name_V(nVar)
     real,             intent(in)  :: tSimulation
 
+    character(len=*), parameter:: NameSub = 'IE_get_for_rb'
+    !--------------------------------------------------------------------------
     call CON_stop(NameSub//': IE_ERROR: empty version cannot be used!')
 
   end subroutine IE_get_for_rb
@@ -81,8 +81,8 @@ module IE_ModUnused
     real, intent(out)   :: Buffer_II(iSize,jSize)
     real, intent(in)    :: tSimulation
 
-    character (len=*),parameter :: NameSub='IE_get_for_ps'
-
+    character(len=*), parameter:: NameSub = 'IE_get_for_ps'
+    !--------------------------------------------------------------------------
     call CON_stop(NameSub//': IE_ERROR: empty version cannot be used!')
 
   end subroutine IE_get_for_ps
@@ -94,8 +94,8 @@ module IE_ModUnused
     type(IndexPtrType),intent(in) :: Index
     type(WeightPtrType),intent(in):: Weight
 
-    character (len=*),parameter :: NameSub='IE_get_for_im'
-
+    character(len=*), parameter:: NameSub = 'IE_get_for_im'
+    !--------------------------------------------------------------------------
     call CON_stop(NameSub//': IE_ERROR: empty version cannot be used!')
 
   end subroutine IE_get_for_im
@@ -105,9 +105,9 @@ module IE_ModUnused
     integer,          intent(in) :: nMlts, nLats, nVarIn
     character(len=3), intent(in) :: NameVarUaIn_V(nVarIn)
     real,             intent(in) :: Buffer_IIBV(nMlts, nLats, 2, nVarIn)
-    
-    character (len=*),parameter :: NameSub='IE_put_from_UA'
 
+    character(len=*), parameter:: NameSub = 'IE_put_from_UA'
+    !--------------------------------------------------------------------------
     call CON_stop(NameSub//': IE_ERROR: empty version cannot be used!')
 
   end subroutine IE_put_from_UA
@@ -117,12 +117,11 @@ module IE_ModUnused
     integer,          intent(out)           :: nVar
     character(len=*), intent(out), optional :: NameVar_V(:)
 
-    character(len=*), parameter :: NameSub='IE_get_info_for_ua'
-    
+    character(len=*), parameter:: NameSub = 'IE_get_info_for_ua'
+    !--------------------------------------------------------------------------
     call CON_stop(NameSub//': IE_ERROR: empty version cannot be used!')
 
   end subroutine IE_get_info_for_ua
-  
   !============================================================================
 
   subroutine IE_get_for_ua(Buffer_IIV,iSize,jSize,nVarIn,NameVar_V, &
@@ -133,8 +132,8 @@ module IE_ModUnused
     character (len=*),intent(in)  :: NameVar_V(nVarIn)
     real,             intent(in)  :: tSimulation
 
-    character (len=*),parameter :: NameSub='IE_get_for_ua'
-
+    character(len=*), parameter:: NameSub = 'IE_get_for_ua'
+    !--------------------------------------------------------------------------
     call CON_stop(NameSub//': IE_ERROR: empty version cannot be used!')
 
   end subroutine IE_get_for_ua
@@ -144,8 +143,8 @@ module IE_ModUnused
     integer, intent(in)  :: iComponent, nMLTsIn
     integer, intent(out) :: iError
 
-    character (len=*), parameter :: NameSub='IE_setnMlts'
-
+    character(len=*), parameter:: NameSub = 'IE_setnMlts'
+    !--------------------------------------------------------------------------
     call CON_stop(NameSub//': IE_ERROR: empty version cannot be used!')
 
   end subroutine IE_setnMlts
@@ -155,31 +154,33 @@ module IE_ModUnused
     integer, intent(in)  :: iComponent, nLatsIn
     integer, intent(out) :: iError
 
-    character (len=*), parameter :: NameSub='IE_setnLats'
-
+    character(len=*), parameter:: NameSub = 'IE_setnLats'
+    !--------------------------------------------------------------------------
     call CON_stop(NameSub//': IE_ERROR: empty version cannot be used!')
 
   end subroutine IE_setnLats
   !============================================================================
   subroutine IE_put_from_im(nPoint,iPointStart,Index,Weight,DoAdd,Buff_V,nVar)
 		use CON_router,   ONLY: IndexPtrType, WeightPtrType
-    character(len=*), parameter   :: NameSub='IE_put_from_im'
     integer,intent(in)            :: nPoint, iPointStart, nVar
     real, intent(in)              :: Buff_V(nVar)
     type(IndexPtrType),intent(in) :: Index
     type(WeightPtrType),intent(in):: Weight
     logical,intent(in)            :: DoAdd
 
+    character(len=*), parameter:: NameSub = 'IE_put_from_im'
+    !--------------------------------------------------------------------------
     call CON_stop(NameSub//': IE_ERROR: empty version cannot be used!')
 
   end subroutine IE_put_from_im
   !============================================================================
   subroutine IE_put_from_im_complete
 
+    !--------------------------------------------------------------------------
     write(*,*)"What is IE_put_from_im_complete really supposed to do?"
 
   end subroutine IE_put_from_im_complete
   !============================================================================
 
-	
-end module IE_ModUnused
+end module SIM_unused
+!==============================================================================

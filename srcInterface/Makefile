@@ -13,7 +13,7 @@ OBJECTS = \
 	IE_wrapper.o
 
 MODULES = \
-	IE_ModUnused.o
+	SIM_unused.o
 
 SEARCHDIR = -I${SHAREDIR} -I${COUPLERDIR} -I${LIBRARYDIR} -I../src
 

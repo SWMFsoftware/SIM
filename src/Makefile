@@ -20,10 +20,10 @@ SEARCHDIR = -I${SHAREDIR}
 # Define OBJECTS and MODULES
 
 MODULES = \
-	IE_ModMain.o \
-	IE_ModMethods.o \
-	IE_ModSolve.o \
-	IE_ModOutput.o
+	SIM_main.o \
+	SIM_methods.o \
+	SIM_solve.o \
+	SIM_output.o
 
 
 DEPEND:
