@@ -7,7 +7,7 @@ module IE_wrapper
 
   use SIM_main
   use SIM_solve, ONLY: solve_ie
-  use IE_ModUnused
+  use SIM_unused
 
   implicit none
 
@@ -20,13 +20,11 @@ module IE_wrapper
   public :: IE_finalize
 
   ! Coupling with GM
-  public :: IE_get_for_gm_sim
-  public :: IE_put_from_gm_sim
+  public :: IE_get_for_gm
+  public :: IE_put_from_gm
 
   ! Not implemented with SIM but needed for compilation
   public :: IE_save_restart
-  public :: IE_get_for_gm
-  public :: IE_put_from_gm
   public :: IE_get_for_pw
   public :: IE_get_for_rb
   public :: IE_get_for_ps
@@ -132,6 +130,9 @@ contains
 
         case('#IECOORDSYSTEM')
           call read_var('IE_CoordSystem', IE_CoordSystem)
+          
+        case('#DODEBUG')
+          call read_var('DoDebug', DoDebug)
 
         case default
           write(*,'(a,i4,a)') NameSub//' IE_ERROR at line ', &
@@ -150,7 +151,7 @@ contains
     ! Initialize the IE module for session iSession
 
     use CON_physics,   ONLY: get_time, get_planet, get_axes
-    use IE_ModMethods, ONLY: calc_epsilon_and_C
+    use SIM_methods,   ONLY: calc_epsilon_and_C
 
     integer,  intent(in) :: iSession         ! session number (starting from 1)
     real,     intent(in) :: TimeSimulation   ! seconds from start time
@@ -187,7 +188,7 @@ contains
   end subroutine IE_run
   !============================================================================
 
-  subroutine IE_get_for_gm_sim(Buffer_IIV, iSize, jSize, nVar, NameVar_I, &
+  subroutine IE_get_for_gm(Buffer_IIV, iSize, jSize, nVar, NameVar_I, &
        tSimulation)
 
     ! When asked for by CON_couple_gm_ie, pass the variables from IE to GM.
@@ -226,10 +227,10 @@ contains
       end select
     end do
 
-  end subroutine IE_get_for_gm_sim
+  end subroutine IE_get_for_gm
   !============================================================================
 
-  subroutine IE_put_from_gm_sim(Buffer_IIV, iSize, jSize, nVar)
+  subroutine IE_put_from_gm(Buffer_IIV, iSize, jSize, nVar)
 
     ! When asked for by CON_couple_gm_ie, pass the variables from GM to IE.
 
@@ -240,7 +241,7 @@ contains
     !--------------------------------------------------------------------------
     Vars_VII(Jr_, :, :) = Buffer_IIV(:, :, 1)
 
-  end subroutine IE_put_from_gm_sim
+  end subroutine IE_put_from_gm
   !============================================================================
 
 end module IE_wrapper

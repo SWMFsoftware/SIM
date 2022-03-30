@@ -49,7 +49,7 @@ foreach (@Arguments){
 }
 
 # Grid size variables
-my $NameFile="src/IE_ModMain.f90";
+my $NameFile="src/SIM_main.f90";
 my $GridSize;
 my ($nTheta, $nPhi);
 

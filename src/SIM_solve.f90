@@ -37,10 +37,12 @@ module SIM_solve
 
     real :: Residual
     integer :: i, j, iI, nIteration, iError
-    logical :: DoTestMe = .true.
+    logical :: DoTestMe = .false.
 
     character(len=*), parameter:: NameSub = 'solve_ie'
     !--------------------------------------------------------------------------
+    if (DoDebug) DoTestMe = .true.
+    
     call construct_linear_system
 
     ! Preconditioning
