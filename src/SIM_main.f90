@@ -81,7 +81,10 @@ contains
 
   subroutine create_grid
 
-      ! Creates a uniform grid covering the entire spherical surface.
+    use CON_planet, ONLY: RadiusPlanet, IonosphereHeight
+    use ModPhysics, ONLY: Si2No_V, UnitX_
+
+    ! Creates a uniform grid covering the entire spherical surface.
 
     integer :: i, j
     real :: ThetaNow, PhiNow
@@ -91,6 +94,14 @@ contains
     dTheta = (179.99 - 0.01) / (nTheta - 1) * cPi / 180
 
     ! Creating the grid.
+
+    if (.not. allocated(Vars_VII)) call init_variables
+
+    Radius = RadiusPlanet + IonosphereHeight    ! in m
+
+    if (index(IE_CoordSystem, 'NORM') /= 0) &
+      Radius = Radius * Si2No_V(UnitX_)
+
     PhiNow = 0.
     do j=1,nPhi
       Vars_VII(Phi_,:,j) = PhiNow

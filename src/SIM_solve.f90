@@ -8,7 +8,6 @@ module SIM_solve
   use SIM_methods,   ONLY: calc_ddtheta, calc_ddphi
 
   use ModUtilities,  ONLY: CON_STOP
-  use CON_planet,    ONLY: RadiusPlanet
 
   implicit none
   save
@@ -42,7 +41,7 @@ module SIM_solve
     character(len=*), parameter:: NameSub = 'solve_ie'
     !--------------------------------------------------------------------------
     if (DoDebug) DoTestMe = .true.
-    
+
     call construct_linear_system
 
     ! Preconditioning
@@ -182,8 +181,7 @@ module SIM_solve
 
     do j=1,nPhi; do i=1,nTheta
       iI = (j - 1) * nTheta + i
-      b_I(iI) = Vars_VII(Jr_,i,j) * sin(Vars_VII(Theta_,i,j))**2 * &
-                (Radius * RadiusPlanet)**2
+      b_I(iI) = Vars_VII(Jr_,i,j) * sin(Vars_VII(Theta_,i,j))**2 * Radius**2
       x_I(iI) = Vars_VII(Potential_,i,j)
     end do; end do
 
